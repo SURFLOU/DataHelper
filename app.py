@@ -43,8 +43,7 @@ class Database():
         sql_Query = "SELECT * FROM info"
         self.cursor.execute(sql_Query)
         records = self.cursor.fetchall()
-        for row in records:
-            print(row)
+        return records
 
     def updateRecords(self):
         self.connection.commit()
@@ -54,12 +53,8 @@ class Database():
 
 
 
-login = "Jasne"
-password = "kupka"
 
 base = Database("localhost", "users", "root", "Jakumo123")
-base.checkPassword(login, password)
-base.addRecord('Jasne', 'kupka')
-base.listRecords()
-base.updateRecords()
+records = base.listRecords()
+print(records)
 base.closeConnection()
