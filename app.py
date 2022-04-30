@@ -49,11 +49,11 @@ class Database():
     def updateRecords(self):
         self.connection.commit()
 
+    
 
-"""print("Input login")
-login = input()
-print("Input password")
-password = input()"""
+
+
+
 login = "Jasne"
 password = "kupka"
 
