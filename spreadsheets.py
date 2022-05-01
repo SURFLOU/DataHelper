@@ -1,26 +1,39 @@
 import csv
-import re
+import pandas as pd
 
 
 class CSVFile:
     def __init__(self, filename):
         self.filename = filename
-        self.file = open(self.filename)
-        self.csvreader = csv.reader(self.file)
-        self.header = next(self.csvreader)
+        try:
+            self.file = open(self.filename)
+            self.csvreader = csv.reader(self.file)
+            self.header = next(self.csvreader)
+        except FileNotFoundError:
+            self.file = open(self.filename, 'w')
+
+    def writeToFile(self, data):
+        with open(self.filename, 'w', newline='') as f:
+            writer = csv.writer(self.file)
+            writer.writerows(data)
 
     def readRows(self):
         rows = []
         for row in self.csvreader:
-            row[0] = row[0].replace(';', ' ')
-            rows.append(row[0].split())
+            rows.append(row)
         return rows
 
     def readHeaders(self):
-        tab = [self.header[0].split(";")]
+        tab = []
+        tab.append([self.header[0],self.header[1],self.header[2]])
         return tab
+
+    def makeDataframe(self):
+        return pd.read_csv(self.filename)
 
     def closeFile(self):
         self.file.close()
+
+
 
 
