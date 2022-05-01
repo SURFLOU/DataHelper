@@ -56,5 +56,4 @@ class Database():
 
 base = Database("localhost", "users", "root", "Jakumo123")
 records = base.listRecords()
-print(records)
 base.closeConnection()

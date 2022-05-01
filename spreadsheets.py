@@ -3,9 +3,8 @@ import re
 
 
 class CSVFile:
-    def __init__(self, filename, header):
+    def __init__(self, filename):
         self.filename = filename
-        self.header = header
         self.file = open(self.filename)
         self.csvreader = csv.reader(self.file)
         self.header = next(self.csvreader)
@@ -18,12 +17,10 @@ class CSVFile:
         return rows
 
     def readHeaders(self):
-        return self.header[0].split(";")
+        tab = [self.header[0].split(";")]
+        return tab
 
     def closeFile(self):
         self.file.close()
 
 
-CSV = CSVFile("wakacje.csv", 'miasto')
-print(CSV.readHeaders())
-print(CSV.readRows())
