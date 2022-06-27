@@ -48,18 +48,3 @@ class Database():
 
     def updateRecords(self):
         self.connection.commit()
-
-
-
-
-
-
-login = "Jasne"
-password = "kupka"
-
-base = Database("localhost", "users", "root", "Jakumo123")
-base.checkPassword(login, password)
-base.addRecord('Jasne', 'kupka')
-base.listRecords()
-base.updateRecords()
-base.closeConnection()
