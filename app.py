@@ -49,11 +49,4 @@ class Database():
         self.connection.commit()
 
 
-# dakodadkopa
 
-
-
-
-base = Database("localhost", "users", "root", "Jakumo123")
-records = base.listRecords()
-base.closeConnection()
